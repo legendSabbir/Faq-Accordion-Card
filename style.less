@@ -1,0 +1,168 @@
+@import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap');
+// text
+@very-dark-desaturated-blue: hsl(238, 29%, 16%);
+@soft-red: hsl(14, 88%, 65%);
+
+//gradient
+@soft-violet: hsl(273, 75%, 66%);
+@soft-blue: hsl(240, 73%, 65%);
+
+//text
+@very-dark-grayish-blue: hsl(237, 12%, 33%);
+@dark-grayish-blue: hsl(240, 6%, 50%);
+
+@light-grayish-blue: hsl(240, 5%, 91%);
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Kumbh Sans', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+  line-height: 1.5;
+  background: linear-gradient(@soft-violet, @soft-blue);
+  min-height: 100vh;
+}
+
+.card {
+  margin: 16px;
+  width: 100%;
+  max-width: 920px;
+  height: 529px;
+  border-radius: 23px;
+  box-shadow: 0px 32px 27px -8px rgba(0, 0, 0, 0.2);
+  
+  background: url("images/bg-pattern-mobile.svg"), white;
+  background-repeat: no-repeat;
+  background-size: 80%;
+  background-position: center -6px;
+  position: relative;
+}
+
+.illustration-mobile {
+  display: block;
+  position: absolute;
+  width: 78%;
+  left: 50%;
+  top: 0;
+  transform: translate(-50%, -60%);
+}
+
+.illustration-desktop { display: none; }
+
+.accordion-container {
+  margin: 24px;
+  margin-top: 8rem;
+  max-width: 350px;
+}
+
+.accordion-header {
+  margin-top: 3.5rem;
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+.accordion-list { 
+  list-style: none; 
+  margin: 0 auto;
+  
+  li {
+    border-bottom: 1px solid @light-grayish-blue;
+  }
+}
+
+.accordion {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  
+  &.active {
+    font-weight: 700;
+    
+    .arrow {
+      transform: rotate(180deg);
+    }
+  }
+}
+
+.accordion-title {
+  color: @very-dark-desaturated-blue;
+  font-size: 0.8rem;
+  padding-block: 1.125rem;
+}
+
+.arrow {
+  transition: transform 0.2s ease;
+}
+
+.panel {
+  max-height: 0px;
+  overflow: hidden;
+  transition: max-height 0.1s ease-out;
+  
+  p {
+    color: @dark-grayish-blue;
+    padding-block-end: 1rem;
+    padding-inline-end: 0.9rem;
+    font-size: 0.75rem;
+    font-weight: 300;
+  }
+}
+
+@media only screen and (min-width: 980px) {
+  .illustration-mobile { display: none; }
+  
+  .card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background: url("images/bg-pattern-desktop.svg"), white;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: -530px -265px;
+    height: 509px;
+  }
+  
+  .illustration-desktop {
+    display: block;
+    
+    .img-cut {
+      overflow-x: hidden;
+      
+      img {
+        margin-top: 4.7rem;
+        margin-left: -4.5rem;
+      }
+    }
+    
+    .img-box {
+      display: block;
+      margin-top: -48%;
+      margin-left: -20.5%;
+      
+    }
+  }
+  
+  .accordion-container {
+    margin-left: 1rem;
+    margin-top: 4rem;
+  }
+  
+  .accordion-header { 
+    text-align: left;
+    margin-top: 0;
+  }
+  
+  .accordion-title { font-size: 0.92rem; }
+  .panel p { font-size: 0.85rem; }
+}
+
+@media (hover: hover) {
+  .accordion-title:hover { color: @soft-red; }
+}
